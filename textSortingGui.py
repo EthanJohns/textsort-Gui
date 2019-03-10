@@ -31,8 +31,14 @@ class TextSortFrame(wx.Frame):
 
         fileMenu = wx.Menu()
         openFile = fileMenu.Append(-1,"&Open\tCtrl-O","Open a File")
+        
         fileMenu.AppendSeparator()
         exitItem = fileMenu.Append(wx.ID_EXIT)
         
+        helpMenu = wx.Menu()
+        aboutItem = helpMenu.Append(wx.ID_ABOUT)
+
         menuBar = wx.MenuBar()
         menuBar.Append(fileMenu, "&File")
+        menuBar.Append(helpMenu, "&About")
+        self.SetMenuBar(menuBar)
