@@ -37,7 +37,7 @@ class TextSortFrame(wx.Frame):
         self.SetStatusText("Everything is fine")
 
         hbox3 = wx.BoxSizer(wx.HORIZONTAL) 
-        l3 = wx.StaticText(panel, -1, "Multiline Text") 
+        l3 = wx.StaticText(pnl, -1, "Multiline Text") 
 		
         hbox3.Add(l3,1, wx.EXPAND|wx.ALIGN_LEFT|wx.ALL,5) 
         self.t3 = wx.TextCtrl(panel,size = (200,100),style = wx.TE_MULTILINE) 
