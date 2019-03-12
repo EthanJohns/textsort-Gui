@@ -106,10 +106,6 @@ class TextSortFrame(wx.Frame):
         wx.MessageBox("Using my Text Sorting code and applying that to a GUI. Practice for saving text files, opening text files and sorting functions.",
                     "About TextSortGui", wx.OK | wx.ICON_INFORMATION) #maybe have this pull from readme.md?
 
-        
-
-
-
 if __name__ == "__main__":
     app = wx.App()
     frm = TextSortFrame(None, title='Text Sorting: The Gui', size=(400, 300))
