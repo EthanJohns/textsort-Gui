@@ -36,6 +36,15 @@ class TextSortFrame(wx.Frame):
         self.CreateStatusBar()
         self.SetStatusText("Everything is fine")
 
+        hbox3 = wx.BoxSizer(wx.HORIZONTAL) 
+        l3 = wx.StaticText(panel, -1, "Multiline Text") 
+		
+        hbox3.Add(l3,1, wx.EXPAND|wx.ALIGN_LEFT|wx.ALL,5) 
+        self.t3 = wx.TextCtrl(panel,size = (200,100),style = wx.TE_MULTILINE) 
+		
+        hbox3.Add(self.t3,1,wx.EXPAND|wx.ALIGN_LEFT|wx.ALL,5) 
+        vbox.Add(hbox3) 
+        self.t3.Bind(wx.EVT_TEXT_ENTER,self.OnEnterPressed)  
     def makeMenuBar(self):
         """
         A menu bar is composed of menus, which are composed of menu items.
@@ -63,34 +72,20 @@ class TextSortFrame(wx.Frame):
         
     def OnOpen(self,event):
         self.SetStatusText("CWD: %s\n" % os.getcwd())
-
-        # Create the dialog. In this case the current directory is forced as the starting
-        # directory for the dialog, and no default file name is forced. This can easilly
-        # be changed in your program. This is an 'open' dialog, and allows multitple
-        # file selections as well.
-        #
-        # Finally, if the directory is changed in the process of getting files, this
-        # dialog is set up to change the current working directory to the path chosen.
         dlg = wx.FileDialog(
             self, message="Choose a file",
             defaultDir=os.getcwd(), 
             defaultFile="",
             wildcard=wildcard,
-            style=wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_CHANGE_DIR
+            style=wx.FD_OPEN #| wx.FD_CHANGE_DIR
             )
 
-        # Show the dialog and retrieve the user response. If it is the OK response, 
-        # process the data.
         if dlg.ShowModal() == wx.ID_OK:
             # This returns a Python list of files that were selected.
             paths = dlg.GetPaths()
-
-            self.SetStatusText('You selected %d files:' % len(paths))
-
-            for path in paths:
-                self.SetStatusText('           %s\n' % path)
-
-        # Compare this with the debug above; did we change working dirs?
+            
+            self.unsortedFile = open(paths[0],'r')
+            print(self.unsortedFile.read())
         self.SetStatusText("CWD: %s\n" % os.getcwd())
 
         # Destroy the dialog. Don't do this until you are done with it!
