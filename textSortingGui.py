@@ -6,7 +6,7 @@ try:
     import os
 except:
     import ctypes  # An included library with Python install.   
-    ctypes.windll.user32.MessageBoxW(0, "WX is a required dependancy! Please install it!", "Error! PEBKAC!", 1)
+    ctypes.windll.user32.MessageBoxW(0, "WX is a required dependency! Please install it!", "Error! PEBKAC!", 1)
 #---------------------------------------------------------------------------
 
 # This is how you pre-establish a file filter so that the dialog
